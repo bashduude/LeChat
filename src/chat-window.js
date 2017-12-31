@@ -5,11 +5,10 @@ export class ChatWindow extends React.Component {
   render() {
     return (
       <div>
-        <h1>its a window component!</h1>
+        <h1>Welcome to the Dude Chat!</h1>
         <div className="chatwindowbox">
           <ul>
-            <li>{this.props.message}</li>
-            <li>message 2</li>
+            {this.props.children}
           </ul>
         </div>
       </div>

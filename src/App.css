@@ -15,18 +15,23 @@ h1 {
 
 .chatwindowbox {
   border: 1px solid green;
-  padding: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: -10px;
 }
 
 ul li {
+  border-radius: 15px;
   font-size: 1.8em;
   list-style: none;
-  border: 1px solid black;
   padding: 5px 10px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 255, 0, 0.1);
 }
 
 ul li:nth-child(odd) {
-  margin-bottom: 10px;
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 input {
@@ -36,6 +41,6 @@ input {
 }
 
 button {
-  margin-top: 15px;
-  font-size: 1.8em;
+  margin-top: 20px;
+  font-size: 2em;
 }
