@@ -9,7 +9,6 @@ import './App.css';
 class App extends Component {
 
   handleChangeInputField = (text) => {
-
     this.setState(
       {
         value: text,
@@ -20,9 +19,7 @@ class App extends Component {
   handleClickSendMessage = (textval) => {
     var messagearr = this.state.messagearr.slice();
     var messageitem = textval;
-
     messagearr.push(messageitem);
-
     this.setState(
       {
         messagearr: messagearr,
@@ -34,6 +31,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       value: '',
       messagearr: [],
