@@ -1,4 +1,3 @@
-import Customers from './components/customers';
 import React, { Component } from 'react';
 import {ChatWindow} from './components/chat-window';
 import {ChatInputField} from './components/chat-input-field';
@@ -75,7 +74,6 @@ class App extends Component {
         </ChatWindow>
         <ChatInputField value={this.state.value} onChange={this.handleChangeInputField} />
         <SendMessage onClick={this.handleClickSendMessage} value={this.state.value} />
-        <Customers />
       </div>
     );
   }

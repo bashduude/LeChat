@@ -4,20 +4,6 @@ const port = 5000;
 const server = app.listen(port, () => `Server running on port ${port}`);
 
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
-
-  res.json(customers);
-});
-
-  // app.get('/', function(req, res){
-  //   res.sendFile(__dirname + '/client/public/index.html');
-  // });
-
 
 const io = require('socket.io')(server);
 let usercount = 0;
