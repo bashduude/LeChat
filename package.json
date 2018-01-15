@@ -1,23 +1,24 @@
 {
-  "name": "chat",
-  "version": "0.1.0",
-  "private": true,
+  "name": "reactexpress",
+  "version": "1.0.0",
+  "description": "LeChat",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "devduude",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.14.6"
+  },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
     "socket.io": "^2.0.4",
     "uuid": "^3.1.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {},
-  "author": "devduude",
-  "license": "ISC"
+  }
 }
