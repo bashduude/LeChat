@@ -6,6 +6,7 @@ export class SendMessage extends React.Component {
   handleClick = () => {
     const textval = this.props.value;
     this.props.onClick(textval);
+
   }
 
   render() {

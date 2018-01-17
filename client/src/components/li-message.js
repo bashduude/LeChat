@@ -16,11 +16,13 @@ export class LiMessage extends React.Component {
 */
 
   render() {
-    const { messages } = this.props
+    const { messages } = this.props;
+    const { liclass } = this.props;
+    // const { othermessage } = this.props;
     return (
       <div>
         {messages.map(item => (
-          <li>{item}</li>
+          <li className={liclass}>{item}</li>
         ))}
       </div>
     );
