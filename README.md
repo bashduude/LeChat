@@ -7,3 +7,5 @@ Open node console,
 
 Теперь можно открывать множество окон в браузере на localhost:3000
 и отправлять сообщения между друг другом.
+
+https://bashduude.github.io/LeChat/ - только фронт.
