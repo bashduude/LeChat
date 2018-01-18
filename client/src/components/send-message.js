@@ -5,9 +5,12 @@ export class SendMessage extends React.Component {
 
   handleClick = () => {
     const textval = this.props.value;
-    this.props.onClick(textval);
-
+    const nameval = this.props.username;
+    if (textval !== "" && nameval !== "") {
+      this.props.onClick(textval, nameval);
+    }
   }
+
 
   render() {
     return (

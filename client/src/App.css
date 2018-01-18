@@ -14,8 +14,8 @@ h1 {
 }
 
 .chatwindowbox {
-  max-height: 400px;
-  min-height: 400px;
+  max-height: 300px;
+  min-height: 300px;
   border: 1px solid green;
   padding-top: 10px;
   padding-right: 10px;
@@ -40,6 +40,10 @@ ul li {
   background-color: rgba(255, 0, 0, 0.1);
 }
 
+.namefield {
+
+}
+
 input {
   margin-top: 25px;
   padding: 5px 10px;
@@ -49,4 +53,5 @@ input {
 button {
   margin-top: 20px;
   font-size: 2em;
+  padding: 5px;
 }

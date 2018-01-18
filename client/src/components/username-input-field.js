@@ -4,18 +4,19 @@ import './../App.css';
 export class UsernameInputField extends React.Component {
 
   handleChange = (e) => {
-    const text = e.target.value;
-    this.props.onChange(text);
+    const name = e.target.value;
+    this.props.onChange(name);
   }
 
   render() {
     return (
       <div>
         <input
-         placeholder="Type your name..."
-         value={this.props.value}
-         type="text"
-         onChange={this.handleChange}
+          className="namefield"
+          placeholder="Type your name..."
+          value={this.props.name}
+          type="text"
+          onChange={this.handleChange}
         />
       </div>
     );

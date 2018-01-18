@@ -6,6 +6,7 @@ import {SendMessage} from './components/send-message';
 import {LiMessage} from './components/li-message';
 import socketIOClient from 'socket.io-client';
 import './App.css';
+const uuidv4 = require('uuid/v4');
 
 
 class App extends Component {
@@ -35,26 +36,33 @@ class App extends Component {
   handleChangeUsernameInputField = (text) => {
     this.setState(
       {
-        message: [{
-          userId: text
-        }],
+        userId: text
       }
     )
   }
 
-  handleClickSendMessage = (textval) => {
+  handleClickSendMessage = (textval, nameval) => {
     var messagearr = this.state.messagearr.slice();
     var messageitem = textval;
     messagearr.push(messageitem);
+    var prevmess = this.state.message.slice();
+    var messageId = uuidv4();
+    var newmess = {
+      userId: nameval,
+      timestamp: "",
+      text: textval,
+      messageId: messageId
+    }
+    prevmess.push(newmess);
     this.setState(
       {
         messagearr: messagearr,
         value: '',
-        currentliclass: "mymessages"
+        currentliclass: "mymessages",
+        message: prevmess
       }
     )
     this.socket.emit("chat message", this.state.value);
-    console.log(this.state.messagearr);
   }
 
 
@@ -64,12 +72,12 @@ class App extends Component {
     this.state = {
       value: '',
       messagearr: [],
-      othermessarr: [],
+      userId: "",
       message: [{
-        socketId: "",
-        userId: "",
-        timestamp: "",
-        text: ""
+        userId: null,
+        timestamp: null,
+        text: null,
+        messageId: ""
       }],
       currentliclass: "mymessages"
     };
@@ -78,17 +86,6 @@ class App extends Component {
   }
 
   render() {
-
-    var socketId = this.socket.id;
-    console.log(socketId);
-    // this.setState(
-    //   {
-    //     message: [{
-    //       socketId: socketId
-    //     }],
-    //   }
-    // )
-
 
     var messagearr = this.state.messagearr.slice();
     this.socket.on("chat message", (msg) => {
@@ -104,11 +101,11 @@ class App extends Component {
     return (
       <div>
         <ChatWindow>
-          <LiMessage messages={this.state.messagearr} othermessage={this.state.othermessarr} liclass={this.state.currentliclass} />
+          <LiMessage messages={this.state.messagearr} messagestuff={this.state.message} liclass={this.state.currentliclass} />
         </ChatWindow>
-        <ChatInputField value={this.state.value} onChange={this.handleChangeInputField} />
         <UsernameInputField name={this.state.message.userId} onChange={this.handleChangeUsernameInputField} />
-        <SendMessage onClick={this.handleClickSendMessage} value={this.state.value} username={this.state.message.userId} />
+        <ChatInputField value={this.state.value} onChange={this.handleChangeInputField} />
+        <SendMessage onClick={this.handleClickSendMessage} value={this.state.value} username={this.state.userId} />
       </div>
     );
   }

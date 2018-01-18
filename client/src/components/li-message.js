@@ -4,26 +4,15 @@ import './../App.css';
 export class LiMessage extends React.Component {
 
 
-/*
-  ComponentWillReceiveProps = (props) => {
-    const chatMessages = props.messages;
-    const listItems = chatMessages.map(function(message, i) {
-      //<li value={message} key={i}></li>
-      alert(message);
-    });
-  }
-
-*/
-
   render() {
-    const { messages } = this.props;
+    // const { messages } = this.props;
     const { liclass } = this.props;
-    // const { othermessage } = this.props;
+    const { messagestuff } = this.props;
     return (
       <div>
-        {messages.map(item => (
-          <li className={liclass}>{item}</li>
-        ))}
+          {messagestuff.map(obj => (
+            <li className={liclass} key={obj.messageId}>{obj.timestamp} {obj.userId}: {obj.text}</li>
+          ))}
       </div>
     );
   }
