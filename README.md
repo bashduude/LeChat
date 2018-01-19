@@ -1,9 +1,9 @@
-# SPA web-chat
+# LeChat - Web Chat on ReactJS
 
-TO START THE CHAT:
-Open node console,
-1) cd SPA-chat-master
-2) npm run dev
+## launching
+- npm install
+- npm run client-install
+- npm run dev
 
 Теперь можно открывать множество окон в браузере на localhost:3000
 и отправлять сообщения между друг другом.
