@@ -11,20 +11,6 @@ const uuidv4 = require('uuid/v4');
 
 class App extends Component {
 
-  // componentWillMount(){
-  //   const socket = socketIOClient('http://localhost:5000');
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   this.socket.on("chat message", function(msg){
-  //     this.setState(
-  //       {
-  //
-  //       }
-  //     )
-  //   });
-  // }
-
   handleChangeInputField = (text) => {
     this.setState(
       {
