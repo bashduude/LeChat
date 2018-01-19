@@ -28,18 +28,22 @@ ul li {
   border-radius: 15px;
   font-size: 1.1em;
   list-style: none;
-  padding: 1px 3px;
+  padding: 3px 3px;
+  width: 250px;
+  margin-bottom: 14px;
 }
 
 .nameandtime {
   font-style: italic;
   font-weight: 400;
+  color: #4682b4;
+  padding-left: 7px;
 }
 
 .textmessage {
   font-size: 1em;
   font-weight: 400;
-  padding-left: 10px; 
+  padding-left: 10px;
 }
 
 .mymessages {

@@ -5,12 +5,14 @@ export class LiMessage extends React.Component {
 
 
   render() {
-    // const { messages } = this.props;
     const { liclass } = this.props;
     const { messagestuff } = this.props;
+    const messagefixed = messagestuff.slice(1);
+
+
     return (
       <div>
-          {messagestuff.map(obj => (
+          {messagefixed.map(obj => (
             <li className={liclass} key={obj.messageId}>
               <h3 className="nameandtime">{obj.timestamp} {obj.userId}:</h3>
               <h4 className="textmessage">{obj.text}</h4>

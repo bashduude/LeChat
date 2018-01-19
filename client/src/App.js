@@ -49,8 +49,8 @@ class App extends Component {
     var messageId = uuidv4();
 
     //creating timestamp
-    var timeopt = { hour: '2-digit', minute: '2-digit' };
-    var timestamp = new Date().toLocaleString('ru-RU', timeopt);
+    var timeoptions = { hour: '2-digit', minute: '2-digit' };
+    var timestamp = new Date().toLocaleString('ru-RU', timeoptions);
 
     var newmess = {
       userId: nameval,
