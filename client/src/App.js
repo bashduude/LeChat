@@ -47,9 +47,14 @@ class App extends Component {
     messagearr.push(messageitem);
     var prevmess = this.state.message.slice();
     var messageId = uuidv4();
+
+    //creating timestamp
+    var timeopt = { hour: '2-digit', minute: '2-digit' };
+    var timestamp = new Date().toLocaleString('ru-RU', timeopt);
+
     var newmess = {
       userId: nameval,
-      timestamp: "",
+      timestamp: timestamp,
       text: textval,
       messageId: messageId
     }

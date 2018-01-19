@@ -26,10 +26,20 @@ h1 {
 
 ul li {
   border-radius: 15px;
-  font-size: 1.8em;
+  font-size: 1.1em;
   list-style: none;
-  padding: 5px 10px;
-  margin-bottom: 10px;
+  padding: 1px 3px;
+}
+
+.nameandtime {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.textmessage {
+  font-size: 1em;
+  font-weight: 400;
+  padding-left: 10px; 
 }
 
 .mymessages {

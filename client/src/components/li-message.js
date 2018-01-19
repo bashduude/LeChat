@@ -11,7 +11,10 @@ export class LiMessage extends React.Component {
     return (
       <div>
           {messagestuff.map(obj => (
-            <li className={liclass} key={obj.messageId}>{obj.timestamp} {obj.userId}: {obj.text}</li>
+            <li className={liclass} key={obj.messageId}>
+              <h3 className="nameandtime">{obj.timestamp} {obj.userId}:</h3>
+              <h4 className="textmessage">{obj.text}</h4>
+            </li>
           ))}
       </div>
     );
