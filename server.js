@@ -18,9 +18,8 @@ io.on('connection', (socket) => {
 
   console.log("Users in chat: " + usercount);
 
-  socket.on('chat message', function(msg){
-    console.log("message: " + msg);
-    socket.broadcast.emit('chat message', msg);
+  socket.on('chat message', function(msgarr){
+    socket.broadcast.emit('chat message', msgarr);
   });
 
   socket.on('disconnect', () => {

@@ -42,9 +42,6 @@ class App extends Component {
   }
 
   handleClickSendMessage = (textval, nameval) => {
-    var messagearr = this.state.messagearr.slice();
-    var messageitem = textval;
-    messagearr.push(messageitem);
     var prevmess = this.state.message.slice();
     var messageId = uuidv4();
 
@@ -58,16 +55,17 @@ class App extends Component {
       text: textval,
       messageId: messageId
     }
+
     prevmess.push(newmess);
+
     this.setState(
       {
-        messagearr: messagearr,
         value: '',
-        currentliclass: "mymessages",
         message: prevmess
       }
     )
-    this.socket.emit("chat message", this.state.value);
+
+    this.socket.emit("chat message", newmess);
   }
 
 
@@ -76,15 +74,13 @@ class App extends Component {
 
     this.state = {
       value: '',
-      messagearr: [],
       userId: "",
       message: [{
         userId: null,
         timestamp: null,
         text: null,
         messageId: ""
-      }],
-      currentliclass: "mymessages"
+      }]
     };
 
     this.socket = socketIOClient('http://localhost:5000');
@@ -92,15 +88,17 @@ class App extends Component {
 
   render() {
 
-    var messagearr = this.state.messagearr.slice();
-    this.socket.on("chat message", (msg) => {
-      messagearr.push(msg);
+    var message = this.state.message.slice();
+
+    this.socket.on("chat message", (msgarr) => {
+      message.push(msgarr);
+
       this.setState(
         {
-          messagearr: messagearr,
-          currentliclass: "othermessages"
+          message: message,
         }
       )
+
     });
 
     return (
