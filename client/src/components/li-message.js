@@ -3,12 +3,10 @@ import './../App.css';
 
 export class LiMessage extends React.Component {
 
-
   render() {
     const { liclass } = this.props;
     const { messagestuff } = this.props;
     const messagefixed = messagestuff.slice(1);
-
 
     return (
       <div>
