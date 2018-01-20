@@ -93,7 +93,7 @@ class App extends Component {
           <LiMessage messages={this.state.messagearr} messagestuff={this.state.message} liclass={this.state.currentliclass} />
         </ChatWindow>
         <UsernameInputField name={this.state.message.userId} onChange={this.handleChangeUsernameInputField} />
-        <ChatInputField value={this.state.value} onChange={this.handleChangeInputField} />
+        <ChatInputField value={this.state.value} username={this.state.userId} onChange={this.handleChangeInputField} onClick={this.handleClickSendMessage} />
         <SendMessage onClick={this.handleClickSendMessage} value={this.state.value} username={this.state.userId} />
       </div>
     );
