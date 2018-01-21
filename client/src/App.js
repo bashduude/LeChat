@@ -39,7 +39,8 @@ class App extends Component {
       userId: nameval,
       timestamp: timestamp,
       text: textval,
-      messageId: messageId
+      messageId: messageId,
+      userClass: "mymessages"
     }
 
     prevmess.push(newmess);
@@ -65,7 +66,11 @@ class App extends Component {
         userId: null,
         timestamp: null,
         text: null,
-        messageId: ""
+        messageId: "",
+        userClass: null
+      }],
+      users: [{
+        userId: null
       }]
     };
 
@@ -75,9 +80,16 @@ class App extends Component {
   render() {
 
     var message = this.state.message.slice();
-
-    this.socket.on("chat message", (msgarr) => {
-      message.push(msgarr);
+    this.socket.on("chat message", (msgobj) => {
+      var others = {
+        userId: msgobj.userId,
+        timestamp: msgobj.timestamp,
+        text: msgobj.text,
+        messageId: msgobj.messageId,
+        userClass: "othermessages"
+      };
+      
+      message.push(others);
 
       this.setState(
         {
@@ -88,9 +100,9 @@ class App extends Component {
     });
 
     return (
-      <div>
+      <div className="chatPage">
         <ChatWindow>
-          <LiMessage messages={this.state.messagearr} messagestuff={this.state.message} liclass={this.state.currentliclass} />
+          <LiMessage messages={this.state.messagearr} messagestuff={this.state.message} />
         </ChatWindow>
         <UsernameInputField name={this.state.message.userId} onChange={this.handleChangeUsernameInputField} />
         <ChatInputField value={this.state.value} username={this.state.userId} onChange={this.handleChangeInputField} onClick={this.handleClickSendMessage} />

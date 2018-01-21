@@ -14,7 +14,6 @@ io.on('connection', (socket) => {
   console.log('someone connected');
   console.log(socket.id);
   usercount++;
-  socket.emit(socket.id);
 
   console.log("Users in chat: " + usercount);
 
