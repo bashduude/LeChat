@@ -1,25 +1,54 @@
+:root {
+  --background-color: rgba(255, 0, 0, 0.07);
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: content-box;
 }
 
 body {
   padding: 25px;
 }
 
-/* .chatPage {
+.loginscreenDisplay {
   display: none;
-} */
+}
 
-h1 {
+.loginscreen {
+  text-align: center;
+}
+
+.loginscreen h1 {
+  margin-bottom: 15px;
+}
+
+.loginscreen input {
+  margin-top: 25px;
+  padding: 5px 10px;
+  font-size: 2em;
+}
+
+.loginscreen button {
+  margin-top: 20px;
+  font-size: 2em;
+  padding: 5px;
+}
+
+.chatPageDisplay {
+  display: none;
+}
+
+.chatPage h1 {
   text-align: center;
   margin-bottom: 15px;
 }
 
 .chatwindowbox {
-  max-height: 300px;
-  min-height: 300px;
+  height: 300px;
+  width: 700px;
   border: 1px solid green;
   padding-top: 10px;
   padding-right: 10px;
@@ -32,12 +61,14 @@ ul li {
   border-radius: 15px;
   font-size: 1.1em;
   list-style: none;
-  padding: 3px 3px;
-  width: 250px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 3px;
   margin-bottom: 14px;
 }
 
 .nameandtime {
+  font-size: 1.1em;
   font-style: italic;
   font-weight: 400;
   color: #4682b4;
@@ -45,30 +76,41 @@ ul li {
 }
 
 .textmessage {
-  font-size: 1em;
+  padding-top: 3px;
+  font-size: 0.98em;
   font-weight: 400;
   padding-left: 10px;
+  padding-bottom: 5px;
+  word-wrap: break-word;
 }
 
+.messagesharedclass {
+  border-radius: 15px;
+  width: 330px;
+}
+
+
 .mymessages {
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 0, 0.15);
 }
 
 .othermessages {
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: var(--background-color, rgba(255, 0, 0, 0.07));
+  position: relative;
+  left: 370px;
 }
 
 .namefield {
 
 }
 
-input {
+.chatPage input {
   margin-top: 25px;
   padding: 5px 10px;
   font-size: 2em;
 }
 
-button {
+.chatPage button {
   margin-top: 20px;
   font-size: 2em;
   padding: 5px;

@@ -17,11 +17,20 @@ io.on('connection', (socket) => {
 
   console.log("Users in chat: " + usercount);
 
+  //catching a message from a user, and broadcasting it to other users
   socket.on('chat message', function(msgarr){
     socket.broadcast.emit('chat message', msgarr);
   });
 
+  // socket.on('new user', function(data, callback){
+  //   callback(true);
+  //   socket.username = data;
+  //
+  // })
+
   socket.on('disconnect', () => {
+
+
     console.log('someone disconnected');
     console.log(socket.id);
 

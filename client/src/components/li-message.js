@@ -10,12 +10,13 @@ export class LiMessage extends React.Component {
     return (
       <div>
           {messagefixed.map(obj => (
-            <div className={obj.userClass} key={obj.messageId}>
+            <div className={obj.userClass} key={obj.messageId} style={{background: obj.yourBGColor}}>
               <li>
-                <h3 className="nameandtime">{obj.timestamp} {obj.userId}:</h3>
+                <h3 className={obj.nameandtimeClass}>{obj.timestamp} {obj.userId}:</h3>
                 <h4 className="textmessage">{obj.text}</h4>
               </li>
             </div>
+
           ))}
       </div>
     );
