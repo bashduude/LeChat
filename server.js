@@ -13,20 +13,20 @@ console.log("Users in chat: " + usercount);
 io.on('connection', (socket) => {
   console.log('someone connected');
   console.log(socket.id);
+
   usercount++;
 
   console.log("Users in chat: " + usercount);
 
   //catching a message from a user, and broadcasting it to other users
-  socket.on('chat message', function(msgarr){
-    socket.broadcast.emit('chat message', msgarr);
+  socket.on('chat message', function(msgobj){
+    socket.broadcast.emit('chat message', msgobj);
   });
 
-  // socket.on('new user', function(data, callback){
-  //   callback(true);
-  //   socket.username = data;
-  //
-  // })
+  socket.on('user joined', function(userobj){
+    socket.broadcast.emit('user joined', userobj);
+  });
+
 
   socket.on('disconnect', () => {
 

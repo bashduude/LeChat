@@ -5,6 +5,7 @@ import {UsernameInputField} from './components/username-input-field';
 import {SendMessage} from './components/send-message';
 import {LiMessage} from './components/li-message';
 import {LoginScreen} from './components/login-screen';
+import {OnlineUsers} from './components/online-users';
 import socketIOClient from 'socket.io-client';
 import './App.css';
 const uuidv4 = require('uuid/v4');
@@ -41,10 +42,14 @@ class App extends Component {
     var bGOpacity = 0.15;
     var yourBGColor = "rgba("+ rColor + ", " + gColor + ", " + bColor + ", " + bGOpacity +")";
 
+    var cursocket = this.socket.id;
+    console.log(cursocket);
+
     //creating new user with custon username and random BackGcolor
     var newuser = {
       userId: nameval,
-      yourBGColor: yourBGColor
+      yourBGColor: yourBGColor,
+      userSocket: cursocket
     }
 
     currentusers.push(newuser);
@@ -62,6 +67,7 @@ class App extends Component {
       }
     )
 
+    this.socket.emit("user joined", newuser);
 
   }
 
@@ -103,6 +109,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.socket = socketIOClient('http://localhost:5000');
+
+    console.log(this.socket);
+
     this.state = {
       value: '',
       userId: "",
@@ -117,7 +127,8 @@ class App extends Component {
       }],
       users: [{
         userId: null,
-        yourBGColor: null
+        yourBGColor: null,
+        userSocket: null
       }],
       loginscreenStyle: {
         classNames: "loginscreen"
@@ -127,11 +138,12 @@ class App extends Component {
       }
     };
 
-    this.socket = socketIOClient('http://localhost:5000');
   }
 
   render() {
 
+    // this portion of code until setState adding messages to the state
+    // from other chatters
     var message = this.state.message.slice();
     this.socket.on("chat message", (msgobj) => {
 
@@ -164,12 +176,27 @@ class App extends Component {
 
     });
 
+    //this portion of code adding users to the state from the server
+    var users = this.state.users.slice();
+    this.socket.on("user joined", (userobj) => {
+
+      users.push(userobj);
+
+      this.setState(
+        {
+          users: users
+        }
+      )
+
+    });
+
     return (
       <div>
         <LoginScreen currentStyle={this.state.loginscreenStyle.classNames} name={this.state.userId} onChange={this.handleChangeUsernameInputField} onClick={this.handleClickLoginScreen}/>
         <div className={this.state.chatPageStyle.classNames}>
+          <OnlineUsers usersArray={this.state.users} />
           <ChatWindow>
-            <LiMessage messages={this.state.messagearr} messagestuff={this.state.message} />
+            <LiMessage messagestuff={this.state.message} />
           </ChatWindow>
           <UsernameInputField name={this.state.message.userId} onChange={this.handleChangeUsernameInputField} />
           <ChatInputField value={this.state.value} username={this.state.userId} onChange={this.handleChangeInputField} onClick={this.handleClickSendMessage} />
